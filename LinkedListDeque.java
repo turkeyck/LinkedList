@@ -1,56 +1,56 @@
 import java.util.Objects;
 
-public class LinkedListDeque {
+public class LinkedListDeque<T> {
 
 
 
-    private static class LList {
-        int item;
+    private class LList {
+        T item;
         public LList previous;
         public LList next;
 
-        public LList(LList p, int i, LList n) {
+        public LList(LList p, T i, LList n) {
             item = i;
             previous = p;
             next = n;
         }
     }
 
-        public LList sentinel;
-        public LList sentinellast;
+        private LList sentinel;
+        private LList sentinellast;
         public LinkedListDeque(){
-            sentinel = new LList(null, 51, sentinellast);
-            sentinellast = new LList(sentinel,101, null);
+            sentinel = new LList(null, null, sentinellast);
+            sentinellast = new LList(sentinel,null, null);
             size = 0;
         }
 
         public int size;
-        public LinkedListDeque(int x){
-            sentinel = new LList(null,51, null);
-            sentinellast = new LList(sentinel, 101, null);
+        public LinkedListDeque(T x){
+            sentinel = new LList(null,null, null);
+            sentinellast = new LList(sentinel, null, null);
             sentinel.next = new LList(sentinel, x, sentinellast);
             sentinellast.previous = sentinel.next;
             size = 1;
         }
 
 
-        public void addFirst(int y){
+        public void addFirst(T y){
             sentinel.next = new LList(sentinel,y, sentinel.next);
             sentinel.next.next.previous = sentinel.next;
             size += 1;
         }
 
-        public int getfirst(){
+        public T getfirst(){
             return sentinel.next.item;
         }
 
-        public void addLast(int y){
+        public void addLast(T y){
             sentinellast.previous = new LList(sentinellast.previous, y, sentinellast);
             sentinellast.previous.previous.next = sentinellast.previous;
             size += 1;
         }
 
-        public int getLast(){
+        public T getLast(){
             return sentinellast.previous.item;
 
         }
@@ -88,7 +88,7 @@ public class LinkedListDeque {
         }
 
         /**iterative method */
-        public int get(int index){
+        public T get(int index){
             LList pt = sentinel.next;
             int i = 0;
             while (i != index){
@@ -99,29 +99,29 @@ public class LinkedListDeque {
         }
 
         /** deepcopy of LinkedListDeque other */
-        public LinkedListDeque(LinkedListDeque other){
-//            sentinel = new LList(null,51, null);
-//            sentinellast = new LList(sentinel, 101, null);
-            for (int j = 0; j < other.size; j++){
-                if (j==0){
-                /** same as public LinkedListDeque(int x) */
-                sentinel = new LList(null,51, null);
-                sentinellast = new LList(sentinel, 101, null);
-                sentinel.next = new LList(sentinel, other.get(j), sentinellast);
-                sentinellast.previous = sentinel.next;
-                size = 1;}
-                if (j > 0){
-                /** same as public addLast(int x) */
-                sentinellast.previous = new LList(sentinellast.previous, other.get(j), sentinellast);
-                sentinellast.previous.previous.next = sentinellast.previous;
-                size += 1;}
-
-            }
-
-        }
+//        public LinkedListDeque(LinkedListDeque other){
+////            sentinel = new LList(null,51, null);
+////            sentinellast = new LList(sentinel, 101, null);
+//            for (int j = 0; j < other.size; j++){
+//                if (j==0){
+//                /** same as public LinkedListDeque(int x) */
+//                sentinel = new LList(null,null, null);
+//                sentinellast = new LList(sentinel, null, null);
+//                sentinel.next = new LList(sentinel, other.get(j), sentinellast);
+//                sentinellast.previous = sentinel.next;
+//                size = 1;}
+//                if (j > 0){
+//                /** same as public addLast(int x) */
+//                sentinellast.previous = new LList(sentinellast.previous, other.get(j), sentinellast);
+//                sentinellast.previous.previous.next = sentinellast.previous;
+//                size += 1;}
+//
+//            }
+//
+//        }
 
         /** recursive method */
-        public int getRecursive(int index){
+        public T getRecursive(int index){
             int i = index;
             LList pt = sentinel.next;
             if (index == 0){
@@ -136,8 +136,8 @@ public class LinkedListDeque {
 
             /** Create two lists, DL and DLL:
                 DL is an empty list, while DLL is (43, 44, 45, 90, 91, 92). */
-            LinkedListDeque DL = new LinkedListDeque();
-            LinkedListDeque DLL = new LinkedListDeque(90);
+            LinkedListDeque<Integer> DL = new LinkedListDeque();
+            LinkedListDeque<Integer> DLL = new LinkedListDeque(90);
             DLL.addFirst(45);
             DLL.addFirst(44);
             DLL.addFirst(43);
@@ -161,8 +161,8 @@ public class LinkedListDeque {
 //            for (int i = 0; i<DLL.size; i++){
 //                System.out.println(DLL.get(i));
 //            }
-            LinkedListDeque DLLcopy = new LinkedListDeque(DLL);
-            DLLcopy.printDeque();
+//            LinkedListDeque<Integer> DLLcopy = new LinkedListDeque(DLL);
+//            DLLcopy.printDeque();
         }
 
 }

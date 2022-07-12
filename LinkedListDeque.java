@@ -108,17 +108,7 @@ public class LinkedListDeque<T> {
             sentinel.next = new LList(sentinel, null, null);
             sentinellast = sentinel.next;
             size = 0;
-//            if (other.size==0){
-//                sentinel = new LList(null, null, null);
-//                sentinellast = new LList(sentinel, null, null);
-//                sentinel.next = sentinellast;
-//                size = 0;
-//            }
-//            if (other.size > 0){
-//                sentinel = new LList(null,null, null);
-//                sentinellast = new LList(sentinel, null, null);
-//                sentinel.next = new LList(sentinel, other.getfirst(), sentinellast);
-//                size = 1;
+
             for (int j = 0; j < other.size(); j++) {
                 addLast(other.get(j));
                 size += 1;

@@ -119,13 +119,17 @@ public class LinkedListDeque<T> {
 
     /** recursive method */
         public T getRecursive(int index){
-            if (index == 0){
-                return sentinel.next.item;
+            if (index > this.size){
+                return null;
             }
-//            LList p = sentinel.next;
+            return getR(this.sentinel.next, index-1);
+        }
 
-//            return this.sentinel.next.item.(index-1);
-            return null;
+        private T getR(LList L, int i){
+            if (i == 0){
+                return L.item;
+            }
+            return getR(L.next, i -1);
         }
 
 

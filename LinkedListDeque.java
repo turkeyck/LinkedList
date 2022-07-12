@@ -155,25 +155,7 @@ public class LinkedListDeque<T> {
             DL.addLast(91);
             DL.addLast(92);
 
-            /** Test functionalities: printDeque, removeLast, removeFirst, get, getRecursive,
-             * and deepcopy. */
-//            System.out.println(DLL.getfirst());
-//            System.out.println(DLL.getLast());
-//            System.out.println(DLL.isEmpty());
-//            DLL.printDeque();
-//            DLL.removeFirst();
-//            DLL.printDeque();
-//            DLL.removeLast();
-//            DLL.printDeque();
-//            DLL.addLast(99);
-//            DLL.addFirst(43);
-//            DLL.printDeque();
-//
-//            for (int i = 0; i<DLL.size; i++){
-////                System.out.println(DLL.get(i));
-//                System.out.println(i);
-//                System.out.println(DLL.getRecursive(i));
-//            }
+            /** test printDeque() and deepcopy() */
             DL.printDeque();
             DLL.printDeque();
             LinkedListDeque<Integer> DLLcopy = new LinkedListDeque(DLL);

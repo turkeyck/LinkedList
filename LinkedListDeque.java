@@ -72,19 +72,23 @@ public class LinkedListDeque<T> {
             System.out.println("\n");
         }
 
-        public void removeFirst(){
-            if (sentinel.next.next != null){
-                sentinel.next.next.previous = sentinel.next.previous;
+        public T removeFirst(){
+            if (sentinel.next.next == null){
+                return null;
             }
-            else {sentinellast.previous = sentinel.next.previous;}
-            sentinel.next = sentinel.next.next;
             size -= 1;
+            T first = getfirst();
+            sentinel.next.next.previous = sentinel.next.previous;
+            sentinel.next = sentinel.next.next;
+            return first;
         }
 
-        public void removeLast(){
+        public T removeLast(){
+            T last = getLast();
             sentinellast.previous.previous.next = sentinellast.previous.next;
             sentinellast.previous = sentinellast.previous.previous;
             size -= 1;
+            return last;
         }
 
         /**iterative method */
@@ -133,30 +137,30 @@ public class LinkedListDeque<T> {
         }
 
 
-        public static void main(String[] args){
-
-            /** Create two lists, DL and DLL:
-                DL is (19, 20, 91, 92), while DLL is (44, 45, 90, 100, 101). */
-            LinkedListDeque<Integer> DL = new LinkedListDeque<Integer>();
-            LinkedListDeque<Integer> DLL = new LinkedListDeque<Integer>(90);
-            DLL.addFirst(45);
-            DLL.addFirst(44);
-            DLL.addLast(100);
-            DLL.addLast(101);
-
-            DL.addFirst(20);
-            DL.addFirst(19);
-            DL.addLast(91);
-            DL.addLast(92);
-
-            /** test printDeque() and deepcopy() */
-            DL.printDeque();
-            DLL.printDeque();
-            LinkedListDeque<Integer> DLLcopy = new LinkedListDeque(DLL);
-            DLLcopy.printDeque();
-            LinkedListDeque<Integer> DLcopy = new LinkedListDeque(DL);
-            DLcopy.printDeque();
-        }
+//        public static void main(String[] args){
+//
+//            /** Create two lists, DL and DLL:
+//                DL is (19, 20, 91, 92), while DLL is (44, 45, 90, 100, 101). */
+//            LinkedListDeque<Integer> DL = new LinkedListDeque<Integer>();
+//            LinkedListDeque<Integer> DLL = new LinkedListDeque<Integer>(90);
+//            DLL.addFirst(45);
+//            DLL.addFirst(44);
+//            DLL.addLast(100);
+//            DLL.addLast(101);
+//
+//            DL.addFirst(20);
+//            DL.addFirst(19);
+//            DL.addLast(91);
+//            DL.addLast(92);
+//
+//            /** test printDeque() and deepcopy() */
+//            DL.printDeque();
+//            DLL.printDeque();
+//            LinkedListDeque<Integer> DLLcopy = new LinkedListDeque<Integer>(DLL);
+//            DLLcopy.printDeque();
+//            LinkedListDeque<Integer> DLcopy = new LinkedListDeque<Integer>(DL);
+//            DLcopy.printDeque();
+//        }
 }
 
 
